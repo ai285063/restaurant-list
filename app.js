@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const app = express()
 const exphbs = require('express-handlebars')
 const restaurantList = require('./models/seeds/restaurant.json')
+const Restaurant = require('./models/restaurant')
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
 
@@ -20,7 +21,10 @@ app.engine('hbs', exphbs({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
-  res.render('index', { restaurants: restaurantList.results })
+  Restaurant.find()
+    .lean()
+    .then(restaurants => res.render('index', { restaurants }))
+    .catch(error => console.error(error))
 })
 
 app.get('/restaurants/:id', (req, res) => {
