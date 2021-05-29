@@ -3,7 +3,6 @@ const mongoose = require('mongoose')
 const app = express()
 const exphbs = require('express-handlebars')
 const bodyParser = require('body-parser')
-const restaurantList = require('./models/seeds/restaurant.json')
 const Restaurant = require('./models/restaurant')
 
 mongoose.connect('mongodb://localhost/restaurant-list', { useNewUrlParser: true, useUnifiedTopology: true })
@@ -46,6 +45,27 @@ app.get('/restaurants/:id', (req, res) => {
   return Restaurant.findById(id)
     .lean()
     .then((restaurant) => res.render('detail', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.get('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  return Restaurant.findById(id)
+    .lean()
+    .then((restaurant) => res.render('edit', { restaurant }))
+    .catch(error => console.log(error))
+})
+
+app.post('/restaurants/:id/edit', (req, res) => {
+  const id = req.params.id
+  const edited = req.body
+  console.log(edited)
+  return Restaurant.findById(id)
+    .then(restaurant => {
+      restaurant.name = edited.name
+      return restaurant.save()
+    })
+    .then(() => res.redirect(`/restaurants/${id}`))
     .catch(error => console.log(error))
 })
 
