@@ -20,9 +20,14 @@
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
       <div class="container">
         <a class="navbar-brand" href="/">
+          {{#if isAuthenticated}}{{ user.name}}'s {{/if}}
           Restaurant List
         </a>
-        <a class="btn btn-outline-dark" href="./restaurants/new">Create</a>
+        {{#if isAuthenticated}}
+        <a href="/users/logout" class="btn btn-outline-dark">Logout</a>
+        {{else}}
+        <a href="/users/login" class="btn btn-outline-dark">Login</a>
+        {{/if}}
       </div>
     </nav>
 
