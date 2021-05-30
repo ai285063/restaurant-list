@@ -32,7 +32,6 @@ router.get('/:id/edit', (req, res) => {
 router.put('/:id', (req, res) => {
   const id = req.params.id
   const edited = req.body
-  console.log(edited)
   return Restaurant.findById(id)
     .then(restaurant => {
       restaurant.name = edited.name
