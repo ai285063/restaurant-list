@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h5>{{restaurant.name}}</h5>
   <a href="/restaurants/{{restaurant._id}}/edit">Edit</a>
-  <form action="/restaurants/{{ restaurant._id }}/delete" method="POST" style="display: inline;">
+  <form action="/restaurants/{{ restaurant._id }}?_method=DELETE" method="POST" style="display: inline;">
     <button type="submit" class="btn btn-danger">Delete</button>
   </form>
   <div class="photo d-flex justify-content-center m-3">
