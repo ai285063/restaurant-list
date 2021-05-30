@@ -37,7 +37,7 @@ router.put('/:id', (req, res) => {
   const edited = req.body
   return Restaurant.findOne({ _id, userId })
     .then(restaurant => {
-      restaurant.name = edited.name
+      restaurant = Object.assign(restaurant, edited)
       return restaurant.save()
     })
     .then(() => res.redirect(`/restaurants/${_id}`))
