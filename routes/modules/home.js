@@ -12,4 +12,17 @@ router.get('/', (req, res) => {
     .catch(error => console.error(error))
 })
 
+router.get('/search', (req, res) => {
+  const { keyword } = req.query
+  const userId = req.user._id
+  const query = new RegExp(keyword.trim(), 'i')
+  return Restaurant.find({
+    $and: [
+      { userId }, { name: query }
+    ]
+  }).lean()
+    .then(results => res.render('index', { restaurants: results, keyword: keyword }))
+    .catch(err => console.log(err))
+})
+
 module.exports = router
