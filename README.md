@@ -11,26 +11,30 @@ MongoDB: v4.2.13
 
 ## Installing - 專案安裝流程
 1. 打開終端機(terminal)，Clone 此專案至本機電腦
-```
+```console
 git clone https://github.com/ai285063/restaurant-list.git
 ```
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
-```
+```console
 cd restaurant-list
 ```
 3. 安裝 npm 套件
-```
+```properties
 npm install
 ```
-4. 在終端機輸入以下指令新增種子資料
-```
+4. 連線至本機 mongodb
+
+5. 參考`.env.example`檔新增`.env`檔並修改成自己的參數
+
+6. 在終端機輸入以下指令新增種子資料
+```properties
 npm run seed
 ```
-5. 執行檔案
-```
+7. 執行檔案
+```properties
 npm run dev
 ```
-6. 當終端機出現以下字樣，表示伺服器與資料庫已啟動並成功連結，就可以打開 `http://localhost:3000` 查看畫面了～
+8. 當終端機出現以下字樣，表示伺服器與資料庫已啟動並成功連結，就可以打開 `http://localhost:3000` 查看畫面了～
 ```
 App is running on http://localhost:3000
 ```
