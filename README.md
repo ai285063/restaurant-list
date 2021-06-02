@@ -22,9 +22,9 @@ cd restaurant-list
 ```shell
 npm install
 ```
-4. 連線至本機 mongodb\
+4. 連線至本機 mongodb  
 
-5. 參考`.env.example`檔新增`.env`檔並修改成自己的參數\
+5. 參考`.env.example`檔新增`.env`檔並修改成自己的參數  
 
 6. 在終端機輸入以下指令新增種子資料
 ```shell
